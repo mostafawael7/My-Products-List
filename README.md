@@ -37,3 +37,8 @@ An iOS app that fetches and displays products from [Fake Store API](https://fake
   - **SkeletonView**: for smooth loading
   - **SDWebImage**: for image loading
   - **Cosmos**: for displaying star ratings
+
+---
+
+## Screenshots
+<img src="https://github.com/user-attachments/assets/899ef3a1-9c7d-4bb0-85d2-1aa8de687ba1" width="300" /> <img src="https://github.com/user-attachments/assets/e23889af-af59-4c1c-866b-ebea8672133e" width="300" /> <img src="https://github.com/user-attachments/assets/7346f5bc-4a97-4a34-badb-c402f406735f" width="300" />
