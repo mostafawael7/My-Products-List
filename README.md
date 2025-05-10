@@ -34,6 +34,6 @@ An iOS app that fetches and displays products from [Fake Store API](https://fake
 - The UI works on all screen sizes
 - I used [this Dribbble design](https://dribbble.com/shots/21664341-Ecommerce-App-Design) as an inspiration for the UI/UX
 - Only used 3 third party libraries which are:
-- **SkeletonView**: for smooth loading
-- **SDWebImage**: for image loading
-- **Cosmos**: for displaying star ratings
+  - **SkeletonView**: for smooth loading
+  - **SDWebImage**: for image loading
+  - **Cosmos**: for displaying star ratings
