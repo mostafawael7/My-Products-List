@@ -9,7 +9,7 @@ import Foundation
 
 class ProductViewModel {
     private(set) var products: [Product] = []
-    private var limit = 5
+    private var limit = 7
     private var isFetching = false
     private var allProductsLoaded = false
 

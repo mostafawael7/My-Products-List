@@ -1,5 +1,5 @@
 //
-//  GridProductCell.swift
+//  ListProductCell.swift
 //  My Products List
 //
 //  Created by Mostafa Hendawi on 10/05/2025.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GridProductCell: UICollectionViewCell {
+class ListProductCell: UICollectionViewCell {
 
     @IBOutlet weak var parentView: UIView!
     @IBOutlet weak var productImg: UIImageView!
@@ -20,4 +20,5 @@ class GridProductCell: UICollectionViewCell {
         
         parentView.layer.cornerRadius = 20
     }
+
 }
