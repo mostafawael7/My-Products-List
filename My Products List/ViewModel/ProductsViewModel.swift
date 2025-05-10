@@ -40,10 +40,13 @@ class ProductViewModel {
                 }
 
                 // Increase the limit for the next fetch
-                limit += 5
+                limit += 7
+                isFetching = false
+            } catch let error as APIError {
+                onError?(error.userFriendlyMessage)
                 isFetching = false
             } catch {
-                onError?(error.localizedDescription)
+                onError?("Unexpected error: \(error.localizedDescription)")
                 isFetching = false
             }
         }

@@ -14,14 +14,6 @@ enum HTTPMethod: String {
     case delete = "DELETE"
 }
 
-enum APIError: Error {
-    case invalidURL
-    case requestFailed(Error)
-    case invalidResponse
-    case statusCode(Int)
-    case decodingFailed(Error)
-}
-
 class NetworkManager {
     static let shared = NetworkManager()
     private init() {}
@@ -38,6 +30,7 @@ class NetworkManager {
         }
         
         var request = URLRequest(url: url)
+        request.timeoutInterval = 15
         request.httpMethod = method.rawValue
         request.httpBody = body
         headers?.forEach { key, value in

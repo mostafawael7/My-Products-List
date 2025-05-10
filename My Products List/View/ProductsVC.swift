@@ -106,13 +106,8 @@ extension ProductsVC: SkeletonCollectionViewDataSource, UICollectionViewDelegate
         }
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let offsetY = scrollView.contentOffset.y
-        let contentHeight = scrollView.contentSize.height
-        let height = scrollView.frame.size.height
-        
-        // When user scrolls within 100 points of bottom
-        if offsetY > contentHeight - height - 100 {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row == viewModel.products.count - 1 {
             viewModel.fetchNextBatch()
         }
     }
