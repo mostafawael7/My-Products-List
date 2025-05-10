@@ -1,6 +1,15 @@
 {
-  "originHash" : "31518e56b428106c247944ffa33d16041ba38589d8918c39621ccaad2afd1b55",
+  "originHash" : "17ddab5b510a0bc04be572a007a8899f87d146dfb73d28d949ea95987bbb04dd",
   "pins" : [
+    {
+      "identity" : "cosmos",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/evgenyneu/Cosmos.git",
+      "state" : {
+        "revision" : "40ba10aaf175bf50abefd0e518bd3b40862af3b1",
+        "version" : "25.0.1"
+      }
+    },
     {
       "identity" : "sdwebimage",
       "kind" : "remoteSourceControl",

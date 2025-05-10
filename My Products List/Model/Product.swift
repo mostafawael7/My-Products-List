@@ -21,8 +21,8 @@ struct Product: Codable {
 enum Category: String, Codable {
     case electronics = "electronics"
     case jewelery = "jewelery"
-    case menSClothing = "men's clothing"
-    case womenSClothing = "women's clothing"
+    case menClothing = "men's clothing"
+    case womenClothing = "women's clothing"
 }
 
 // MARK: - Rating

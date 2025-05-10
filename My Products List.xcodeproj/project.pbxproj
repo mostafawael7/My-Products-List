@@ -10,6 +10,7 @@
 		1CCA5BBD2DCF830B004A7AD5 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 1CCA5BBC2DCF830B004A7AD5 /* SDWebImage */; };
 		1CCA5BBF2DCF830B004A7AD5 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1CCA5BBE2DCF830B004A7AD5 /* SDWebImageMapKit */; };
 		1CCA5BCB2DCF9261004A7AD5 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = 1CCA5BCA2DCF9261004A7AD5 /* SkeletonView */; };
+		1CCA5CEE2DCFC7CA004A7AD5 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 1CCA5CED2DCFC7CA004A7AD5 /* Cosmos */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 			files = (
 				1CCA5BBF2DCF830B004A7AD5 /* SDWebImageMapKit in Frameworks */,
 				1CCA5BCB2DCF9261004A7AD5 /* SkeletonView in Frameworks */,
+				1CCA5CEE2DCFC7CA004A7AD5 /* Cosmos in Frameworks */,
 				1CCA5BBD2DCF830B004A7AD5 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,6 +139,7 @@
 				1CCA5BBC2DCF830B004A7AD5 /* SDWebImage */,
 				1CCA5BBE2DCF830B004A7AD5 /* SDWebImageMapKit */,
 				1CCA5BCA2DCF9261004A7AD5 /* SkeletonView */,
+				1CCA5CED2DCFC7CA004A7AD5 /* Cosmos */,
 			);
 			productName = "My Products List";
 			productReference = 1C6353562DCDFCAC00068062 /* My Products List.app */;
@@ -223,6 +226,7 @@
 			packageReferences = (
 				1CC481EE2DCF817400ABDB92 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				1CCA5BC92DCF9261004A7AD5 /* XCRemoteSwiftPackageReference "SkeletonView" */,
+				1CCA5CEC2DCFC7CA004A7AD5 /* XCRemoteSwiftPackageReference "Cosmos" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 1C6353572DCDFCAC00068062 /* Products */;
@@ -615,6 +619,14 @@
 				minimumVersion = 1.31.0;
 			};
 		};
+		1CCA5CEC2DCFC7CA004A7AD5 /* XCRemoteSwiftPackageReference "Cosmos" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/Cosmos.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 25.0.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -632,6 +644,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1CCA5BC92DCF9261004A7AD5 /* XCRemoteSwiftPackageReference "SkeletonView" */;
 			productName = SkeletonView;
+		};
+		1CCA5CED2DCFC7CA004A7AD5 /* Cosmos */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1CCA5CEC2DCFC7CA004A7AD5 /* XCRemoteSwiftPackageReference "Cosmos" */;
+			productName = Cosmos;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

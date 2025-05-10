@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Cosmos
 
 class ListProductCell: UICollectionViewCell {
 
@@ -13,12 +14,14 @@ class ListProductCell: UICollectionViewCell {
     @IBOutlet weak var productImg: UIImageView!
     @IBOutlet weak var productNameLbl: UILabel!
     @IBOutlet weak var productPriceLbl: UILabel!
-    @IBOutlet weak var productRatingView: StarRatingView!
+    @IBOutlet weak var productRatingView: CosmosView!
+    @IBOutlet weak var productReviewLbl: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         parentView.layer.cornerRadius = 20
+        productRatingView.settings.fillMode = .precise
     }
 
 }

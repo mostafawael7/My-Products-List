@@ -17,6 +17,8 @@ class ProductsVC: UIViewController {
     private let listCellId = "ListProductCell"
     private var isGridView = false
     
+    private var selectedProduct: Product?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,6 +26,7 @@ class ProductsVC: UIViewController {
         
         productsCollectionView.showAnimatedGradientSkeleton()
         
+        displayAnimatedActivityIndicatorView()
         bindViewModel()
         viewModel.fetchNextBatch()
     }
@@ -39,11 +42,13 @@ class ProductsVC: UIViewController {
         productsCollectionView.dataSource = self
         productsCollectionView.register(UINib(nibName: listCellId, bundle: nil), forCellWithReuseIdentifier: listCellId)
         productsCollectionView.register(UINib(nibName: gridCellId, bundle: nil), forCellWithReuseIdentifier: gridCellId)
+        productsCollectionView.accessibilityIdentifier = "productsCollectionView"
     }
     
     private func bindViewModel() {
         viewModel.onProductsUpdated = { [weak self] _ in
             DispatchQueue.main.async {
+                self?.hideAnimatedActivityIndicatorView()
                 self?.productsCollectionView.hideSkeleton()
                 self?.productsCollectionView.reloadData()
             }
@@ -51,6 +56,7 @@ class ProductsVC: UIViewController {
         
         viewModel.onError = { [weak self] error in
             DispatchQueue.main.async {
+                self?.hideAnimatedActivityIndicatorView()
                 self?.showErrorAlert(message: error)
                 print("Error: \(error)")
             }
@@ -61,6 +67,13 @@ class ProductsVC: UIViewController {
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetails" {
+            let dest = segue.destination as! ProductDetailsVC
+            dest.product = selectedProduct
+        }
     }
     
     @IBAction func showListBtnClicked(_ sender: UIButton) {
@@ -94,16 +107,23 @@ extension ProductsVC: SkeletonCollectionViewDataSource, UICollectionViewDelegate
             cell.productImg.sd_setImage(with: URL(string: product.image), placeholderImage: UIImage(named: "placeholder-image"))
             cell.productNameLbl.text = product.title
             cell.productPriceLbl.text = "$\(product.price)"
-            cell.productRatingView.rating = Float(product.rating.rate)
+            cell.productRatingView.rating = product.rating.rate
+            cell.productRatingLbl.text = "\(product.rating.rate)"
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: listCellId, for: indexPath) as! ListProductCell
             cell.productImg.sd_setImage(with: URL(string: product.image), placeholderImage: UIImage(named: "placeholder-image"))
             cell.productNameLbl.text = product.title
             cell.productPriceLbl.text = "$\(product.price)"
-            cell.productRatingView.rating = Float(product.rating.rate)
+            cell.productRatingView.rating = product.rating.rate
+            cell.productReviewLbl.text = "\(product.rating.rate)"
             return cell
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedProduct = viewModel.products[indexPath.row]
+        performSegue(withIdentifier: "showDetails", sender: self)
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -114,7 +134,7 @@ extension ProductsVC: SkeletonCollectionViewDataSource, UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if isGridView {
-            return CGSize(width: 170, height: 250)
+            return CGSize(width: 160, height: 250)
         } else {
             return CGSize(width: UIScreen.main.bounds.width - 20, height: 150)
         }
